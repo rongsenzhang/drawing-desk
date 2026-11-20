@@ -1,0 +1,86 @@
+{
+  "url": "https://rongsenzhang.github.io/drawing-desk/upload.html?release=1.0",
+  "input": "tests/pdf-fixtures/workshop-label-pages.pdf",
+  "page": 2,
+  "browser": "WebKit 26.5",
+  "emulation": "iPhone 13",
+  "requestInput": "JPEG raster of the selected page only",
+  "postsBeforeConfirmation": 0,
+  "requests": 1,
+  "model": "gpt-6.2-astra",
+  "readAt": "2026-11-20T23:14:18.819Z",
+  "exact": 5,
+  "total": 5,
+  "fields": [
+    {
+      "key": "partId",
+      "expected": "CARD-386",
+      "value": "CARD-386",
+      "status": "read",
+      "exact": true,
+      "box": [
+        73,
+        211,
+        469,
+        238
+      ],
+      "evidence": "PART ID: CARD-386"
+    },
+    {
+      "key": "revision",
+      "expected": "F",
+      "value": "F",
+      "status": "read",
+      "exact": true,
+      "box": [
+        73,
+        310,
+        317,
+        336
+      ],
+      "evidence": "REVISION: F"
+    },
+    {
+      "key": "material",
+      "expected": "VINYL",
+      "value": "VINYL",
+      "status": "read",
+      "exact": true,
+      "box": [
+        73,
+        409,
+        435,
+        435
+      ],
+      "evidence": "MATERIAL: VINYL"
+    },
+    {
+      "key": "finish",
+      "expected": "GLOSS",
+      "value": "GLOSS",
+      "status": "read",
+      "exact": true,
+      "box": [
+        73,
+        507,
+        377,
+        534
+      ],
+      "evidence": "FINISH: GLOSS"
+    },
+    {
+      "key": "spec",
+      "expected": "CARD-72",
+      "value": "CARD-72",
+      "status": "read",
+      "exact": true,
+      "box": [
+        72,
+        606,
+        387,
+        633
+      ],
+      "evidence": "SPEC: CARD-72"
+    }
+  ]
+}

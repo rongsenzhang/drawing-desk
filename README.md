@@ -40,6 +40,8 @@ The original three drawings yielded **15/15 expected field decisions** and **9/9
 
 On a fourth, differently laid-out office inventory card, an actual file chooser on the published site sent one request after explicit confirmation. GPT-6.2 Astra and full-page browser OCR each matched all **5/5** expected field decisions, including the blank specification. The test used a touch-enabled WebKit iPhone 13 profile. [Uploaded test image](tests/reader-independent.png) · [Live upload record](tests/openai-upload-e2e.json)
 
+A further public upload check selected the **second page** of a two-page PDF. Only that page’s prepared JPEG went to the model; the five returned fields matched the raster-only page, including part ID **CARD-386**. [Paid PDF upload record](tests/openai-pdf-e2e.json) · [PDF fixture](tests/pdf-fixtures/workshop-label-pages.pdf)
+
 For eight hand-labelled relevant reference queries, six returned the intended clause first and seven returned it in the first three. Review the known wording miss and the negative controls in the [validation guide](docs/validation-engine.md).
 
 Three actual, paid GPT-6.2 Astra responses scored **15/15 exact field decisions** on the original scans, including one absent specification. All **14/14** returned evidence boxes contained the centre of the corresponding OCR line. That location score compares the two reading systems on these images. The model received each image alone, without the enquiry, OCR, or expected answers. The service tests use an HTTP test double and real SQLite transactions to exercise quotas and failure handling. Only a captured provider response counts as a live model observation. [OpenAI service method](docs/openai-service.md) · [Offline service tests](tests/service.test.mjs)

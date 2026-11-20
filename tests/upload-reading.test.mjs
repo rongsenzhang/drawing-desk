@@ -67,3 +67,11 @@ test('compares values and presence separately, retaining the human review gate',
   assert.equal(compareField({ status: 'missing' }, { status: 'missing' })[0], 'review');
   assert.equal(compareField(null, r)[0], 'pending');
 });
+
+test('only well-ordered in-range model evidence can be located on the source raster', () => {
+  const row = { key: 'partId', status: 'read', value: 'P-1', evidence: 'PART ID P-1' };
+  const parsed = box => modelReading(response([{ ...row, box }])).fields[0].box;
+  assert.deepEqual(parsed([20, 40, 750, 201]), [20, 40, 750, 201]);
+  for (const invalid of [null, [], [0, 0, 0, 20], [30, 90, 20, 100], [-3, 5, 44, 70],
+    [5, 5.1, 44, 70], [0, 0, 1001, 1000]]) assert.equal(parsed(invalid), null);
+});

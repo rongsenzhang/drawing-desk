@@ -21,3 +21,5 @@ python3 scripts/vendor-pdf.py
 ```
 
 The PDF smoke test selects a genuine two-page synthetic drawing and reads its distinct page identifiers through browser OCR. It checks page changes, the optional evidence overlay, rejected documents and the body of a simulated model request. It was run on desktop Chromium and mobile WebKit emulation. Its service response is a fixture and consumes no OpenAI credit. [Browser smoke script](../scripts/pdf-smoke.cjs) · [Test PDF sources](../tests/pdf-fixtures/README.md).
+
+A separate live check on the published site imported the same two-page document with WebKit in an iPhone 13 profile, selected the raster-only second page, and explicitly sent its preview. The hosted model read all five expected fields, including CARD-386. Only the JPEG page image was transmitted. A physical handset was not used. [Actual response and case result](../tests/openai-pdf-e2e.json) · [Opt-in paid reproduction](../scripts/live-pdf-check.cjs)
