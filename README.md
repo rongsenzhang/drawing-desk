@@ -40,12 +40,12 @@ The original three drawings yielded **15/15 expected field decisions** and **9/9
 
 For eight hand-labelled relevant reference queries, six returned the intended clause first and seven returned it in the first three. Review the known wording miss and the negative controls in the [validation guide](docs/validation-engine.md).
 
-The local recognition measurements above use the browser OCR and geometric detector. A separate cloud evaluation sends the image alone, captures returned observations and coordinates, then compares them with reference labels. The service tests use an HTTP test double and real SQLite transactions to exercise quotas and failure handling. Only a captured provider response counts as a live model observation. [OpenAI service method](docs/openai-service.md) · [Offline service tests](tests/service.test.mjs)
+Three actual, paid GPT-6.2 Astra responses scored **15/15 exact field decisions** on the original scans, including one absent specification. All **14/14** returned evidence boxes contained the centre of the corresponding OCR line. That location score compares the two reading systems on these images. The model received each image alone, without the enquiry, OCR, or expected answers. The service tests use an HTTP test double and real SQLite transactions to exercise quotas and failure handling. Only a captured provider response counts as a live model observation. [OpenAI service method](docs/openai-service.md) · [Offline service tests](tests/service.test.mjs)
 
 | Evidence | Question it answers |
 | --- | --- |
 | [Local OCR and geometry benchmark](tests/vision-benchmark.json) · [WebKit repeat](tests/vision-webkit.json) | Which expected fields and centres did the reproducible local pipeline find, and where did it fail? |
-| Live provider benchmark, recorded separately in `tests/openai-benchmark.json` when calls complete | Which source fields did a paid model request actually return, what did it abstain on, and where did the two readers agree? Mock responses and quota tests do not contribute to this result. |
+| [Live provider benchmark](tests/openai-benchmark.json) · [Actual model readings](data/openai-readings.json) | Which source fields did a paid model request actually return, what did it abstain on, and where did the two readers agree? Mock responses and quota tests do not contribute to this result. |
 | [Reference search evaluation](docs/validation-engine.md) | Where does the intended clause rank, and what happens for queries without a relevant record? |
 
 | Read more | Purpose |
@@ -58,6 +58,8 @@ The local recognition measurements above use the browser OCR and geometric detec
 | [Integration contract](docs/integration.md) | The receiver's schema, replay checks, limits and duplicate handling. |
 | [Operator exercise](docs/operator-guide.md) | A walkthrough and a knowledge-transfer check for reviewers. |
 | [Third-party notices](THIRD-PARTY-NOTICES.md) | Origins and licences of the vendored vision engine and model. |
+
+[中文技术路线与验收说明](docs/technical-path.zh-CN.md)
 
 ## Run locally
 

@@ -101,7 +101,7 @@ async function loadLibrary() {
     return [name, await response.json()];
   }));
   const loaded = Object.fromEntries(entries);
-  loaded.fixtures = loaded.fixtures.map(f => ({...f, modelReading: loaded['openai-readings'][f.id] || null}));
+  loaded.fixtures = loaded.fixtures.map(f => ({...f, modelReading: loaded['openai-readings'][f.id] || null, ocrGeometry: loaded.observations[f.id]}));
   return loaded;
 }
 

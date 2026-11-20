@@ -21,6 +21,7 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npm test
       - run: npm run test:search
+      - run: node scripts/evaluate-openai.mjs --check
       - run: npx playwright install --with-deps chromium webkit
       - name: Recompute OCR from the drawings
         run: npm run test:vision

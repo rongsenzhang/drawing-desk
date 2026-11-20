@@ -61,3 +61,7 @@ The three inputs are intentionally small enough to inspect visually. Boundary an
 4. Start with a shadow pilot beside the existing process. Agree an escalation policy, sustainable false-hold rate and acceptable missed-requirement risk with the users. Introduce staff training, incident review, monitoring and operating ownership before controlled release.
 
 These four steps are proposed enterprise milestones. The public release provides three controlled cases, an image-reading exercise for visitor files and camera frames, and separate evidence for each tested component.
+
+## Inspecting a released model reading
+
+The released sample packets include separate GPT-6.2 Astra readings captured from the deployed service. The workspace and receiving inbox replay them alongside the source-specific OCR pass. A disagreement, uncertain value, unsupported quote or model box that misses the corresponding OCR line centre produces an additional blocking finding. Both readers can share errors on unseen material. [Actual model outputs](../data/openai-readings.json) · [Exact-value and location measurements](../tests/openai-benchmark.json)

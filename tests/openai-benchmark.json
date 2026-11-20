@@ -1,0 +1,146 @@
+{
+  "model": "gpt-6.2-astra",
+  "originals": 3,
+  "total": 15,
+  "exact": 15,
+  "located": 14,
+  "visible": 14,
+  "observations": [
+    {
+      "boxContainsOcrCentre": true,
+      "case": "revision",
+      "field": "partId",
+      "expected": "PL-104",
+      "observed": "PL-104",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "revision",
+      "field": "revision",
+      "expected": "B",
+      "observed": "B",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "revision",
+      "field": "material",
+      "expected": "ALUMINIUM",
+      "observed": "ALUMINIUM",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "revision",
+      "field": "finish",
+      "expected": "NATURAL",
+      "observed": "NATURAL",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "revision",
+      "field": "spec",
+      "expected": "WS-12",
+      "observed": "WS-12",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "clean",
+      "field": "partId",
+      "expected": "PL-208",
+      "observed": "PL-208",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "clean",
+      "field": "revision",
+      "expected": "A",
+      "observed": "A",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "clean",
+      "field": "material",
+      "expected": "ACRYLIC",
+      "observed": "ACRYLIC",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "clean",
+      "field": "finish",
+      "expected": "MATTE",
+      "observed": "MATTE",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "clean",
+      "field": "spec",
+      "expected": "WS-12",
+      "observed": "WS-12",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "missing",
+      "field": "partId",
+      "expected": "PL-312",
+      "observed": "PL-312",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "missing",
+      "field": "revision",
+      "expected": "C",
+      "observed": "C",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "missing",
+      "field": "material",
+      "expected": "ACRYLIC",
+      "observed": "ACRYLIC",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": true,
+      "case": "missing",
+      "field": "finish",
+      "expected": "MATTE",
+      "observed": "MATTE",
+      "status": "read",
+      "exact": true
+    },
+    {
+      "boxContainsOcrCentre": null,
+      "case": "missing",
+      "field": "spec",
+      "expected": null,
+      "observed": null,
+      "status": "missing",
+      "exact": true
+    }
+  ],
+  "scope": "Three original synthetic stockroom plate scans from one fixed family. No measure of general drawing accuracy."
+}

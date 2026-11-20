@@ -55,7 +55,7 @@ function saveHistory() {
 }
 function recompute() {
   const history = state.history[state.current];
-  analysis = analyzePacket(selected(), observation().text, library, Array.isArray(history) ? history : []);
+  analysis = analyzePacket({...selected(), ocrGeometry:observation()}, observation().text, library, Array.isArray(history) ? history : []);
 }
 function choose(id, updateUrl = true) {
   if (!packets.some((p) => p.id === id)) id = 'revision';

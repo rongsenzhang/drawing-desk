@@ -1,1 +1,198 @@
-{}
+{
+  "revision": {
+    "model": "gpt-6.2-astra",
+    "readAt": "2026-11-20T23:06:54.794Z",
+    "fields": [
+      {
+        "key": "partId",
+        "status": "read",
+        "value": "PL-104",
+        "evidence": "PART ID: PL-104",
+        "box": [
+          658,
+          343,
+          809,
+          371
+        ]
+      },
+      {
+        "key": "revision",
+        "status": "read",
+        "value": "B",
+        "evidence": "REVISION: B",
+        "box": [
+          658,
+          403,
+          769,
+          431
+        ]
+      },
+      {
+        "key": "material",
+        "status": "read",
+        "value": "ALUMINIUM",
+        "evidence": "MATERIAL: ALUMINIUM",
+        "box": [
+          658,
+          462,
+          877,
+          491
+        ]
+      },
+      {
+        "key": "finish",
+        "status": "read",
+        "value": "NATURAL",
+        "evidence": "FINISH: NATURAL",
+        "box": [
+          658,
+          522,
+          822,
+          550
+        ]
+      },
+      {
+        "key": "spec",
+        "status": "read",
+        "value": "WS-12",
+        "evidence": "SPEC: WS-12",
+        "box": [
+          658,
+          582,
+          780,
+          610
+        ]
+      }
+    ],
+    "inputSha256": "360bcc72cbc447ed78a2bacf1cef5898dc7eaa45f6fe29aef5fd7fe198187159"
+  },
+  "clean": {
+    "model": "gpt-6.2-astra",
+    "readAt": "2026-11-20T23:07:16.776Z",
+    "fields": [
+      {
+        "key": "partId",
+        "status": "read",
+        "value": "PL-208",
+        "evidence": "PART ID: PL-208",
+        "box": [
+          658,
+          343,
+          808,
+          370
+        ]
+      },
+      {
+        "key": "revision",
+        "status": "read",
+        "value": "A",
+        "evidence": "REVISION: A",
+        "box": [
+          658,
+          403,
+          770,
+          430
+        ]
+      },
+      {
+        "key": "material",
+        "status": "read",
+        "value": "ACRYLIC",
+        "evidence": "MATERIAL: ACRYLIC",
+        "box": [
+          658,
+          462,
+          848,
+          490
+        ]
+      },
+      {
+        "key": "finish",
+        "status": "read",
+        "value": "MATTE",
+        "evidence": "FINISH: MATTE",
+        "box": [
+          658,
+          522,
+          799,
+          550
+        ]
+      },
+      {
+        "key": "spec",
+        "status": "read",
+        "value": "WS-12",
+        "evidence": "SPEC: WS-12",
+        "box": [
+          658,
+          582,
+          780,
+          610
+        ]
+      }
+    ],
+    "inputSha256": "4048fba3da76cc9a9567e0bf0668c5d12287a9061d96335404f4c29ebe2fa5ae"
+  },
+  "missing": {
+    "model": "gpt-6.2-astra",
+    "readAt": "2026-11-20T23:07:27.290Z",
+    "fields": [
+      {
+        "key": "partId",
+        "status": "read",
+        "value": "PL-312",
+        "evidence": "PART ID: PL-312",
+        "box": [
+          658,
+          343,
+          808,
+          371
+        ]
+      },
+      {
+        "key": "revision",
+        "status": "read",
+        "value": "C",
+        "evidence": "REVISION: C",
+        "box": [
+          658,
+          403,
+          771,
+          431
+        ]
+      },
+      {
+        "key": "material",
+        "status": "read",
+        "value": "ACRYLIC",
+        "evidence": "MATERIAL: ACRYLIC",
+        "box": [
+          658,
+          462,
+          848,
+          491
+        ]
+      },
+      {
+        "key": "finish",
+        "status": "read",
+        "value": "MATTE",
+        "evidence": "FINISH: MATTE",
+        "box": [
+          658,
+          522,
+          798,
+          550
+        ]
+      },
+      {
+        "key": "spec",
+        "status": "missing",
+        "value": null,
+        "evidence": null,
+        "box": null
+      }
+    ],
+    "inputSha256": "35765a369dc3accd9c1ef9fc3a6ad7f156e58c3e19868648647fdb1058877c91"
+  }
+}

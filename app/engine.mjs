@@ -210,7 +210,7 @@ export function analyzePacket(fixture, drawingText, catalogue, decisions = []) {
   if (fixture.modelReading) {
     for (const item of fieldRows) {
       const field = fields.find(f => f.key === item.key);
-      item.modelCheck = crossCheckField(fixture.modelReading, field, item.drawing);
+      item.modelCheck = crossCheckField(fixture.modelReading, field, item.drawing, fixture.ocrGeometry);
       const check = item.modelCheck;
       const witness = asEvidence('OpenAI vision', check.model, check.evidence || 'No readable evidence supplied for this field.');
       item.evidence.push(witness);

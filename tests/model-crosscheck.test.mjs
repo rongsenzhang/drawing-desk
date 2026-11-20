@@ -45,3 +45,31 @@ test('absent locator, unreadable field, duplicate observation and unsupported qu
   more.fields.push({ ...more.fields[0] });
   assert.equal(crossCheckField(more, source.fields[0], source.fields[0].drawing).status, 'review');
 });
+
+test('recorded OpenAI readings agree with the located original fields and preserve the missing-spec hold', async () => {
+  const fixtures = await json('../data/fixtures.json');
+  const readings = await json('../data/openai-readings.json');
+  const ocr = await json('../data/observations.json');
+  for (const fixture of fixtures) {
+    const r = analyzePacket({...fixture, modelReading:readings[fixture.id], ocrGeometry:ocr[fixture.id]}, ocr[fixture.id].text, clauses);
+    for (const item of r.fields) {
+      if (fixture.id === 'missing' && item.key === 'spec') assert.equal(item.modelCheck.status,'both-missing');
+      else {
+        assert.equal(item.modelCheck.status,'agrees');
+        assert.equal(item.modelCheck.containsOcrCentre,true);
+      }
+    }
+    assert.equal(r.handoffAllowed,fixture.id==='clean');
+  }
+});
+
+test('a matching value with a misplaced model evidence box blocks the handoff', async () => {
+  const originals = await json('../data/openai-readings.json');
+  const geometry = (await json('../data/observations.json')).clean;
+  const changed = structuredClone(originals.clean);
+  changed.fields.find(f=>f.key==='material').box=[1,1,10,10];
+  const result = analyzePacket({...packet,modelReading:changed,ocrGeometry:geometry}, sampleText, clauses);
+  assert.equal(result.handoffAllowed,false);
+  assert.equal(result.fields.find(f=>f.key==='material').modelCheck.containsOcrCentre,false);
+  assert.ok(result.findings.some(f=>f.id==='vision-material'));
+});
