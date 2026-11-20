@@ -1,0 +1,40 @@
+[
+  {
+    "id": "revision",
+    "title": "Revision discrepancy",
+    "rfqId": "RFQ-104",
+    "partName": "Stockroom identification plate",
+    "rfqText": "From: Workshop A purchasing desk\nSubject: Stockroom plate enquiry\nPlease prepare an estimate for the stockroom bin labels.\nPART ID: PL-104\nREVISION: A\nMATERIAL: ALUMINIUM\nFINISH: NATURAL\nSPEC: WS-12\nQUANTITY: 24",
+    "scan": "assets/scans/revision.png",
+    "clarifications": [
+      {
+        "id": "CL-104-02",
+        "title": "Workshop A • written revision confirmation",
+        "text": "Customer reply CL-104-02 for RFQ-104 and PL-104. For this estimate, use the supplied drawing at revision B. This corrects the revision A in our original enquiry. All other requested details remain as supplied.",
+        "route": "Engineering",
+        "findingId": "field-revision",
+        "value": "B",
+        "rfqId": "RFQ-104",
+        "partId": "PL-104"
+      }
+    ]
+  },
+  {
+    "id": "clean",
+    "title": "Matched packet",
+    "rfqId": "RFQ-208",
+    "partName": "Stockroom identification plate",
+    "rfqText": "From: Workshop B purchasing desk\nSubject: Estimate for replacement bin labels\nWe need a short-run estimate for our stockroom labels.\nPART ID: PL-208\nREVISION: A\nMATERIAL: ACRYLIC\nFINISH: MATTE\nSPEC: WS-12\nQUANTITY: 12",
+    "scan": "assets/scans/clean.png",
+    "clarifications": []
+  },
+  {
+    "id": "missing",
+    "title": "Incomplete evidence",
+    "rfqId": "RFQ-312",
+    "partName": "Stockroom identification plate",
+    "rfqText": "From: Workshop C purchasing desk\nSubject: Workshop stockroom labels\nPlease estimate the following labels against the enclosed drawing.\nPART ID: PL-312\nREVISION: C\nMATERIAL: ACRYLIC\nFINISH: MATTE\nSPEC: WS-12\nQUANTITY: 36",
+    "scan": "assets/scans/missing.png",
+    "clarifications": []
+  }
+]

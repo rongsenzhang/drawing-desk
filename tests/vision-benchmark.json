@@ -1,0 +1,709 @@
+{
+  "browser": "157.0.8103.80",
+  "engine": "Tesseract.js 7.0.0 LSTM English tessdata_fast 4.1.0",
+  "externalRequests": [],
+  "cases": [
+    {
+      "id": "revision",
+      "variant": "original",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-104",
+          "actual": "PL-104",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "B",
+          "actual": "B",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ALUMINIUM",
+          "actual": "ALUMINIUM",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "NATURAL",
+          "actual": "NATURAL",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": "WS-12",
+          "actual": "WS-12",
+          "exact": true
+        }
+      ],
+      "matchedCentres": 4,
+      "referenceCentres": 4,
+      "extraCentres": 0
+    },
+    {
+      "id": "revision",
+      "variant": "shifted",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-104",
+          "actual": "PL-104",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "B",
+          "actual": "B",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ALUMINIUM",
+          "actual": "ALUMINIUM",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "NATURAL",
+          "actual": "NATURAL",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": "WS-12",
+          "actual": "WS-12",
+          "exact": true
+        }
+      ],
+      "matchedCentres": 4,
+      "referenceCentres": 4,
+      "extraCentres": 0
+    },
+    {
+      "id": "revision",
+      "variant": "downsample-60",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-104",
+          "actual": "PL-104",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "B",
+          "actual": "B",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ALUMINIUM",
+          "actual": "ALUMINIUM,",
+          "exact": false
+        },
+        {
+          "name": "FINISH",
+          "target": "NATURAL",
+          "actual": "NATURAL",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": "WS-12",
+          "actual": "WS-12",
+          "exact": true
+        }
+      ],
+      "matchedCentres": 4,
+      "referenceCentres": 4,
+      "extraCentres": 0
+    },
+    {
+      "id": "revision",
+      "variant": "spec-erased",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-104",
+          "actual": "PL-104",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "B",
+          "actual": "B",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ALUMINIUM",
+          "actual": "ALUMINIUM",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "NATURAL",
+          "actual": "NATURAL",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": null,
+          "actual": null,
+          "exact": true
+        }
+      ],
+      "matchedCentres": 4,
+      "referenceCentres": 4,
+      "extraCentres": 0
+    },
+    {
+      "id": "revision",
+      "variant": "hole-erased",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-104",
+          "actual": "PL-104",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "B",
+          "actual": "B",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ALUMINIUM",
+          "actual": "ALUMINIUM",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "NATURAL",
+          "actual": "NATURAL",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": "WS-12",
+          "actual": "WS-12",
+          "exact": true
+        }
+      ],
+      "matchedCentres": 3,
+      "referenceCentres": 3,
+      "extraCentres": 0
+    },
+    {
+      "id": "revision",
+      "variant": "unseen-id",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-541",
+          "actual": "PL-541",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "B",
+          "actual": "B",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ALUMINIUM",
+          "actual": "ALUMINIUM",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "NATURAL",
+          "actual": "NATURAL",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": "WS-12",
+          "actual": "WS-12",
+          "exact": true
+        }
+      ],
+      "matchedCentres": 4,
+      "referenceCentres": 4,
+      "extraCentres": 0
+    },
+    {
+      "id": "clean",
+      "variant": "original",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-208",
+          "actual": "PL-208",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "A",
+          "actual": "A",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": "WS-12",
+          "actual": "WS-12",
+          "exact": true
+        }
+      ],
+      "matchedCentres": 2,
+      "referenceCentres": 2,
+      "extraCentres": 0
+    },
+    {
+      "id": "clean",
+      "variant": "shifted",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-208",
+          "actual": "PL-208",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "A",
+          "actual": "A",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": "WS-12",
+          "actual": "WS-12",
+          "exact": true
+        }
+      ],
+      "matchedCentres": 2,
+      "referenceCentres": 2,
+      "extraCentres": 0
+    },
+    {
+      "id": "clean",
+      "variant": "downsample-60",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-208",
+          "actual": "PL-208",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "A",
+          "actual": "A",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": "WS-12",
+          "actual": "WS-12",
+          "exact": true
+        }
+      ],
+      "matchedCentres": 2,
+      "referenceCentres": 2,
+      "extraCentres": 0
+    },
+    {
+      "id": "clean",
+      "variant": "spec-erased",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-208",
+          "actual": "PL-208",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "A",
+          "actual": "A",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": null,
+          "actual": null,
+          "exact": true
+        }
+      ],
+      "matchedCentres": 2,
+      "referenceCentres": 2,
+      "extraCentres": 0
+    },
+    {
+      "id": "clean",
+      "variant": "hole-erased",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-208",
+          "actual": "PL-208",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "A",
+          "actual": "A",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": "WS-12",
+          "actual": "WS-12",
+          "exact": true
+        }
+      ],
+      "matchedCentres": 1,
+      "referenceCentres": 1,
+      "extraCentres": 0
+    },
+    {
+      "id": "clean",
+      "variant": "unseen-id",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-541",
+          "actual": "PL-541",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "A",
+          "actual": "A",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": "WS-12",
+          "actual": "WS-12",
+          "exact": true
+        }
+      ],
+      "matchedCentres": 2,
+      "referenceCentres": 2,
+      "extraCentres": 0
+    },
+    {
+      "id": "missing",
+      "variant": "original",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-312",
+          "actual": "PL-312",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "C",
+          "actual": "C",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": null,
+          "actual": null,
+          "exact": true
+        }
+      ],
+      "matchedCentres": 3,
+      "referenceCentres": 3,
+      "extraCentres": 0
+    },
+    {
+      "id": "missing",
+      "variant": "shifted",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-312",
+          "actual": "PL-312",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "C",
+          "actual": "C",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": null,
+          "actual": null,
+          "exact": true
+        }
+      ],
+      "matchedCentres": 3,
+      "referenceCentres": 3,
+      "extraCentres": 0
+    },
+    {
+      "id": "missing",
+      "variant": "downsample-60",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-312",
+          "actual": "PL-312",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "C",
+          "actual": "C",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": null,
+          "actual": null,
+          "exact": true
+        }
+      ],
+      "matchedCentres": 3,
+      "referenceCentres": 3,
+      "extraCentres": 0
+    },
+    {
+      "id": "missing",
+      "variant": "spec-erased",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-312",
+          "actual": "PL-312",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "C",
+          "actual": "C",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": null,
+          "actual": null,
+          "exact": true
+        }
+      ],
+      "matchedCentres": 3,
+      "referenceCentres": 3,
+      "extraCentres": 0
+    },
+    {
+      "id": "missing",
+      "variant": "hole-erased",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-312",
+          "actual": "PL-312",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "C",
+          "actual": "C",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": null,
+          "actual": null,
+          "exact": true
+        }
+      ],
+      "matchedCentres": 2,
+      "referenceCentres": 2,
+      "extraCentres": 0
+    },
+    {
+      "id": "missing",
+      "variant": "unseen-id",
+      "fieldMatches": [
+        {
+          "name": "PART ID",
+          "target": "PL-541",
+          "actual": "PL-541",
+          "exact": true
+        },
+        {
+          "name": "REVISION",
+          "target": "C",
+          "actual": "C",
+          "exact": true
+        },
+        {
+          "name": "MATERIAL",
+          "target": "ACRYLIC",
+          "actual": "ACRYLIC",
+          "exact": true
+        },
+        {
+          "name": "FINISH",
+          "target": "MATTE",
+          "actual": "MATTE",
+          "exact": true
+        },
+        {
+          "name": "SPEC",
+          "target": null,
+          "actual": null,
+          "exact": true
+        }
+      ],
+      "matchedCentres": 3,
+      "referenceCentres": 3,
+      "extraCentres": 0
+    }
+  ]
+}

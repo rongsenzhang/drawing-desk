@@ -1,0 +1,14 @@
+{
+  "name": "drawing-desk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Independent quotation intake and drawing review demonstration",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:search": "node scripts/evaluate-search.mjs",
+    "test:vision": "node scripts/benchmark-vision.cjs",
+    "test:browser": "node scripts/review-smoke.cjs"
+  },
+  "devDependencies": {"playwright": "1.62.1"}
+}

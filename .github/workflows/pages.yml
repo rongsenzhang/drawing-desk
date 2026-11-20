@@ -1,0 +1,62 @@
+name: Verify and publish Drawing Desk
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: drawing-desk-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm test
+      - run: npm run test:search
+      - run: npx playwright install --with-deps chromium webkit
+      - name: Recompute OCR from the drawings
+        run: npm run test:vision
+      - name: Test desktop and mobile review including estimating intake
+        run: |
+          python3 -m http.server 4178 --bind 127.0.0.1 > /tmp/drawing-desk-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server"' EXIT
+          for attempt in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:4178/ >/dev/null; then break; fi
+            sleep 1
+          done
+          BASE_URL=http://127.0.0.1:4178/ npm run test:browser
+          LAB_BASE_URL=http://127.0.0.1:4178/ node scripts/smoke-scan-lab.cjs
+          BASE_URL=http://127.0.0.1:4178/ node scripts/upload-smoke.cjs
+      - name: Stage browser files
+        if: github.ref == 'refs/heads/main'
+        run: |
+          mkdir _site
+          cp -R app assets data index.html inbox.html scan-lab.html upload.html THIRD-PARTY-NOTICES.md _site/
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: _site
+  publish:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish the verified site
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

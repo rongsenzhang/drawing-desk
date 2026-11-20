@@ -1,0 +1,14 @@
+{
+  "revision": {
+    "fields": {"PART ID":"PL-104","REVISION":"B","MATERIAL":"ALUMINIUM","FINISH":"NATURAL","SPEC":"WS-12"},
+    "centres": [[166,265],[620,265],[166,445],[620,445]]
+  },
+  "clean": {
+    "fields": {"PART ID":"PL-208","REVISION":"A","MATERIAL":"ACRYLIC","FINISH":"MATTE","SPEC":"WS-12"},
+    "centres": [[173,355],[610,355]]
+  },
+  "missing": {
+    "fields": {"PART ID":"PL-312","REVISION":"C","MATERIAL":"ACRYLIC","FINISH":"MATTE","SPEC":null},
+    "centres": [[165,265],[619,265],[392,445]]
+  }
+}

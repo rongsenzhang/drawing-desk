@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Change a training drawing and see how live OCR affects the estimating review."
+    />
+    <meta name="theme-color" content="#12383c" />
+    <title>Scan lab · Drawing Desk</title>
+    <link rel="icon" href="assets/mark.png" />
+    <link rel="stylesheet" href="app/styles.css" />
+    <link rel="stylesheet" href="app/lab.css" />
+  </head>
+  <body>
+    <a class="skip" href="#lab">Skip to experiment</a>
+    <header class="bar">
+      <div class="bar-inner">
+        <a class="brand" href="./" aria-label="Drawing Desk home"
+          ><i class="mark" aria-hidden="true"></i>Drawing Desk</a
+        >
+        <nav aria-label="Main navigation">
+          <a href="./#workspace">Workspace</a><a href="scan-lab.html" aria-current="page">Scan lab</a
+          ><a href="inbox.html">Estimating inbox</a
+          ><a href="https://github.com/rongsenzhang/drawing-desk">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="shell" id="lab">
+      <div class="intro">
+        <div>
+          <p class="kicker"><span class="shortline"></span> Technical quotation</p>
+          <h1>Scan lab</h1>
+          <p class="lead">
+            Change the drawing pixels and see how the evidence affects an estimating handoff.
+          </p>
+        </div>
+        <div class="version">
+          <span class="live-dot"></span> Portfolio demo <span class="mono">v1.0</span>
+        </div>
+      </div>
+      <form class="lab-controls panel" id="experiments">
+        <fieldset disabled>
+          <legend>Choose a version of the same drawing</legend>
+          <label><input type="radio" name="mode" value="original" checked /> Original scan</label>
+          <label><input type="radio" name="mode" value="spec-erased" /> Hide specification</label>
+          <label><input type="radio" name="mode" value="downsample-60" /> Reduce to 60%</label>
+        </fieldset>
+        <div class="run-row">
+          <button type="submit" class="primary" id="run" disabled>Run OCR on this scan</button
+          ><span id="activity" role="status" aria-live="polite">Opening the sample…</span>
+        </div>
+      </form>
+      <div class="lab-grid">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Scan input</h2>
+            <span class="mono">RFQ-208</span>
+          </div>
+          <figure class="lab-image">
+            <img id="scan" alt="Stockroom identification plate drawing" width="1200" height="720" />
+            <figcaption id="caption">Loading image…</figcaption>
+          </figure>
+        </section>
+        <section class="panel" aria-labelledby="decision-heading">
+          <div class="panel-head"><h2 id="decision-heading">Handoff check</h2></div>
+          <div class="panel-body">
+            <p class="subtext">The enquiry and reference catalogue stay fixed for this experiment.</p>
+            <div class="gate-list">
+              <p><span>Recorded original</span><strong id="baseline-gate">Loading…</strong></p>
+              <p><span>Live reading</span><strong id="live-gate">Waiting for OCR</strong></p>
+            </div>
+            <p id="field-change"></p>
+            <p id="rings" class="subtext"></p>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><h2>Original OCR transcript</h2></div>
+          <pre class="lab-raw" id="baseline-text"></pre>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><h2>Live OCR transcript</h2></div>
+          <pre class="lab-raw" id="live-text">Waiting for OCR</pre>
+        </section>
+      </div>
+      <p class="lab-note">
+        This experiment uses one of three original training sheets. Changes last for this page visit. The
+        workspace and estimating inbox keep their own records. Pricing stays with the estimator.
+        <a href="https://github.com/rongsenzhang/drawing-desk/blob/main/docs/vision.md"
+          >Read the recognition benchmark.</a
+        >
+      </p>
+      <noscript>Enable JavaScript to run the image experiment.</noscript>
+    </main>
+    <footer>
+      <div class="shell foot">
+        <span>Drawing Desk <span class="muted">/</span> Independent portfolio project</span
+        ><span>Original synthetic documents · Local browser processing</span>
+      </div>
+    </footer>
+    <script type="module" src="app/scan-lab.mjs"></script>
+  </body>
+</html>

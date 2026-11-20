@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#12383c" />
+    <meta
+      name="description"
+      content="Inspect a drawing, compare technical requirements and prepare an evidence-linked estimating handoff. An independent portfolio demonstration."
+    />
+    <title>Drawing Desk · Quotation review</title>
+    <link rel="icon" href="assets/mark.png" />
+    <link rel="stylesheet" href="app/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#workspace">Skip to workspace</a>
+    <header class="bar">
+      <div class="bar-inner">
+        <a class="brand" href="./" aria-label="Drawing Desk home"
+          ><i class="mark" aria-hidden="true"></i>Drawing Desk</a
+        >
+        <nav aria-label="Main navigation">
+          <a href="#workspace" aria-current="page">Workspace</a
+          ><a class="upload-nav" href="upload.html">Upload or take a photo</a
+          ><a href="inbox.html">Estimating inbox</a><button type="button" data-guide>Guide</button
+          ><a href="https://github.com/rongsenzhang/drawing-desk">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="shell" id="workspace">
+      <div class="intro">
+        <div>
+          <p class="kicker"><span class="shortline"></span> Technical quotation</p>
+          <h1>Quotation review</h1>
+          <p class="lead">Compare an enquiry with the drawing before it reaches estimating.</p>
+        </div>
+        <div class="version">
+          <span class="live-dot"></span> Portfolio demo <span class="mono">v1.0</span>
+        </div>
+      </div>
+      <section aria-label="Choose a sample packet" class="selector" id="cases"></section>
+      <div class="mobile-jump"><a href="#review-title">Jump to evidence review</a></div>
+      <div id="board"><p class="loading" role="status">Opening sample packets…</p></div>
+      <noscript>Enable JavaScript to use the review workspace.</noscript>
+    </main>
+    <footer>
+      <div class="shell foot">
+        <span>Drawing Desk <span class="muted">/</span> Independent portfolio project</span
+        ><span>Original synthetic documents · Local browser processing</span>
+      </div>
+    </footer>
+    <dialog id="guide">
+      <div class="dialog-inner">
+        <button class="close" aria-label="Close guide" data-close>×</button>
+        <p class="kicker">Operator guide</p>
+        <h2>Review your first packet</h2>
+        <ol class="steps">
+          <li>
+            <strong>Compare the two sources.</strong> Open the revision case. Read the revision in the
+            drawing and in the enquiry.
+          </li>
+          <li>
+            <strong>Check how the evidence was obtained.</strong> View the OCR transcript or rerun
+            recognition. Switch on detected-hole markers to inspect the geometry.
+          </li>
+          <li>
+            <strong>Investigate the hold.</strong> Review the exception, look up the relevant reference and
+            refer it with a short reason.
+          </li>
+          <li>
+            <strong>Record the customer's clarification.</strong> Select the supplied response, explain the
+            decision, and compare the original and effective values.
+          </li>
+          <li>
+            <strong>Pass it to estimating.</strong> Download the handoff, open the estimating inbox and
+            import it. Try the incomplete packet to see how a hold affects intake.
+          </li>
+        </ol>
+        <div class="dialog-links">
+          <a href="https://github.com/rongsenzhang/drawing-desk/blob/main/docs/role-map.md"
+            >Seven project stages</a
+          ><a href="https://github.com/rongsenzhang/drawing-desk/blob/main/docs/market-research.md"
+            >Business research</a
+          ><a href="https://github.com/rongsenzhang/drawing-desk/blob/main/docs/vision.md"
+            >Recognition results</a
+          >
+        </div>
+        <button class="primary" data-close>Return to workspace</button>
+      </div>
+    </dialog>
+    <div id="toast" class="toast" aria-live="polite"></div>
+    <script type="module" src="app/workspace.mjs"></script>
+  </body>
+</html>

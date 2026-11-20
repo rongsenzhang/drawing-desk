@@ -1,0 +1,225 @@
+{
+  "revision": {
+    "text": "PART ID: PL-104\nREVISION: B\nMATERIAL: ALUMINIUM\nFINISH: NATURAL\nSPEC: WS-12",
+    "confidence": 93,
+    "holes": [
+      {
+        "x": 166,
+        "y": 265,
+        "r": 12.5
+      },
+      {
+        "x": 620,
+        "y": 265,
+        "r": 12.5
+      },
+      {
+        "x": 166,
+        "y": 445,
+        "r": 12.5
+      },
+      {
+        "x": 620,
+        "y": 445,
+        "r": 12.5
+      }
+    ],
+    "lines": [
+      {
+        "text": "PART ID: PL-104",
+        "confidence": 93,
+        "x": 792,
+        "y": 248,
+        "width": 177,
+        "height": 18
+      },
+      {
+        "text": "REVISION: B",
+        "confidence": 93,
+        "x": 792,
+        "y": 291,
+        "width": 129,
+        "height": 18
+      },
+      {
+        "text": "MATERIAL: ALUMINIUM",
+        "confidence": 96,
+        "x": 792,
+        "y": 334,
+        "width": 258,
+        "height": 18
+      },
+      {
+        "text": "FINISH: NATURAL",
+        "confidence": 96,
+        "x": 792,
+        "y": 377,
+        "width": 194,
+        "height": 18
+      },
+      {
+        "text": "SPEC: WS-12",
+        "confidence": 92,
+        "x": 791,
+        "y": 420,
+        "width": 143,
+        "height": 18
+      }
+    ],
+    "width": 1200,
+    "height": 720,
+    "region": {
+      "x": 98,
+      "y": 205,
+      "width": 588,
+      "height": 302
+    },
+    "ocrRegion": {
+      "x": 776,
+      "y": 233,
+      "width": 375,
+      "height": 228
+    }
+  },
+  "clean": {
+    "text": "PART ID: PL-208\nREVISION: A\nMATERIAL: ACRYLIC\nFINISH: MATTE\nSPEC: WS-12",
+    "confidence": 93,
+    "holes": [
+      {
+        "x": 173,
+        "y": 355,
+        "r": 12.5
+      },
+      {
+        "x": 610,
+        "y": 355,
+        "r": 12.5
+      }
+    ],
+    "lines": [
+      {
+        "text": "PART ID: PL-208",
+        "confidence": 93,
+        "x": 792,
+        "y": 248,
+        "width": 176,
+        "height": 18
+      },
+      {
+        "text": "REVISION: A",
+        "confidence": 96,
+        "x": 792,
+        "y": 291,
+        "width": 131,
+        "height": 18
+      },
+      {
+        "text": "MATERIAL: ACRYLIC",
+        "confidence": 96,
+        "x": 792,
+        "y": 334,
+        "width": 224,
+        "height": 18
+      },
+      {
+        "text": "FINISH: MATTE",
+        "confidence": 92,
+        "x": 792,
+        "y": 377,
+        "width": 165,
+        "height": 18
+      },
+      {
+        "text": "SPEC: WS-12",
+        "confidence": 92,
+        "x": 791,
+        "y": 420,
+        "width": 143,
+        "height": 18
+      }
+    ],
+    "width": 1200,
+    "height": 720,
+    "region": {
+      "x": 98,
+      "y": 205,
+      "width": 588,
+      "height": 302
+    },
+    "ocrRegion": {
+      "x": 776,
+      "y": 233,
+      "width": 375,
+      "height": 228
+    }
+  },
+  "missing": {
+    "text": "PART ID: PL-312\nREVISION: C\nMATERIAL: ACRYLIC\nFINISH: MATTE",
+    "confidence": 93,
+    "holes": [
+      {
+        "x": 165,
+        "y": 265,
+        "r": 12.5
+      },
+      {
+        "x": 619,
+        "y": 265,
+        "r": 12.5
+      },
+      {
+        "x": 392,
+        "y": 445,
+        "r": 12.5
+      }
+    ],
+    "lines": [
+      {
+        "text": "PART ID: PL-312",
+        "confidence": 93,
+        "x": 792,
+        "y": 248,
+        "width": 175,
+        "height": 18
+      },
+      {
+        "text": "REVISION: C",
+        "confidence": 93,
+        "x": 792,
+        "y": 291,
+        "width": 131,
+        "height": 18
+      },
+      {
+        "text": "MATERIAL: ACRYLIC",
+        "confidence": 96,
+        "x": 792,
+        "y": 334,
+        "width": 224,
+        "height": 18
+      },
+      {
+        "text": "FINISH: MATTE",
+        "confidence": 92,
+        "x": 792,
+        "y": 377,
+        "width": 165,
+        "height": 18
+      }
+    ],
+    "width": 1200,
+    "height": 720,
+    "region": {
+      "x": 98,
+      "y": 205,
+      "width": 588,
+      "height": 302
+    },
+    "ocrRegion": {
+      "x": 776,
+      "y": 233,
+      "width": 375,
+      "height": 228
+    }
+  }
+}

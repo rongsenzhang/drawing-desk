@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#12383c" />
+    <meta
+      name="description"
+      content="Receive and verify a Drawing Desk handoff for internal estimate preparation."
+    />
+    <title>Estimating inbox · Drawing Desk</title>
+    <link rel="icon" href="assets/mark.png" />
+    <link rel="stylesheet" href="app/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#inbox">Skip to estimating inbox</a>
+    <header class="bar">
+      <div class="bar-inner">
+        <a class="brand" href="./" aria-label="Drawing Desk home"
+          ><i class="mark" aria-hidden="true"></i>Drawing Desk</a
+        >
+        <nav aria-label="Main navigation">
+          <a href="./#workspace">Workspace</a>
+          <a href="inbox.html" aria-current="page">Estimating inbox</a>
+          <a href="https://github.com/rongsenzhang/drawing-desk/blob/main/docs/operator-guide.md">Guide</a>
+          <a href="https://github.com/rongsenzhang/drawing-desk">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="shell" id="inbox">
+      <div class="intro">
+        <div>
+          <p class="kicker"><span class="shortline"></span> Technical quotation</p>
+          <h1>Estimating inbox</h1>
+          <p class="lead">Receive a reviewed enquiry for estimate preparation.</p>
+        </div>
+        <div class="version">
+          <span class="live-dot"></span> Portfolio demo <span class="mono">v1.0</span>
+        </div>
+      </div>
+      <div class="inbox-grid">
+        <section class="panel" aria-labelledby="receive-heading">
+          <div class="panel-head"><h2 id="receive-heading">Import a handoff</h2></div>
+          <div class="panel-body">
+            <p class="subtext" id="file-help">
+              Select the JSON file exported by the review workspace. The inbox checks its evidence and
+              replays the reviewer’s decisions.
+            </p>
+            <form id="intake-form">
+              <label class="search-label" for="handoff-file">Handoff file</label>
+              <input
+                id="handoff-file"
+                name="handoff"
+                type="file"
+                accept=".json,application/json"
+                aria-describedby="file-help"
+                required
+              />
+              <div>
+                <button class="primary" id="import-button" type="submit" disabled>Import handoff</button>
+              </div>
+            </form>
+            <p id="feedback" role="status" aria-live="polite" aria-atomic="true">
+              Opening the sample evidence library…
+            </p>
+            <p class="subtext">
+              This simulated receiving system stores accepted records in this browser.
+              <a href="./#workspace">Open the workspace to prepare a packet.</a>
+            </p>
+          </div>
+        </section>
+        <section class="panel" aria-labelledby="queue-heading">
+          <div class="panel-head">
+            <h2 id="queue-heading">Received packets</h2>
+            <span class="count-tag" id="receipt-count">0</span>
+          </div>
+          <div class="panel-body" id="receipts"></div>
+        </section>
+      </div>
+      <noscript>Enable JavaScript to check a handoff and view the local inbox.</noscript>
+    </main>
+    <footer>
+      <div class="shell foot">
+        <span>Drawing Desk <span class="muted">/</span> Independent portfolio project</span
+        ><span>Original synthetic documents · Local browser processing</span>
+      </div>
+    </footer>
+    <script type="module" src="app/inbox.mjs"></script>
+  </body>
+</html>

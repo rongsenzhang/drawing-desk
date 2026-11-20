@@ -1,0 +1,12 @@
+[
+  {"query":"Where is the written customer confirmation for a drawing revision?","expected":"DC-03"},
+  {"query":"Need quantity for a batch estimate","expected":"CM-02"},
+  {"query":"Compare a mismatched surface finish and material","expected":"EN-04"},
+  {"query":"Missing specification on this drawing","expected":"QR-05"},
+  {"query":"Historical instruction for archived shelf labels","expected":"WS-11"},
+  {"query":"Which identifiers belong on a workshop stockroom identification plate?","expected":"WS-12"},
+  {"query":"How many units did the buyer order?","expected":"CM-02"},
+  {"query":"The revision changed; who handles customer confirmation?","expected":"DC-03"},
+  {"query":"Where should I book a hotel?","expected":null},
+  {"query":"and to the","expected":null}
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "WS-12",
+    "kind": "plate-specification",
+    "revision": "2",
+    "status": "current",
+    "title": "Stockroom plate identification",
+    "text": "For a workshop stockroom identification plate, compare the part identifier, revision, material, finish and specification reference on the drawing with the request. Record unresolved differences before handing the packet to the estimator."
+  },
+  {
+    "id": "WS-11",
+    "kind": "plate-specification",
+    "revision": "1",
+    "status": "retired",
+    "title": "Archived shelf label instruction",
+    "text": "An earlier workshop plate instruction referred to shelf labels by their item number and finish. This record is retained for historical searches. Refer for clarification if it is cited in a new estimate."
+  },
+  {
+    "id": "DC-03",
+    "kind": "review-instruction",
+    "revision": "1",
+    "status": "current",
+    "title": "Drawing revision discrepancies",
+    "text": "When drawing and request revisions differ, retain both observations. Engineering reviews written customer confirmation identifying the enquiry, the part and the accepted revision before estimating proceeds."
+  },
+  {
+    "id": "QR-05",
+    "kind": "review-instruction",
+    "revision": "1",
+    "status": "current",
+    "title": "Missing specification evidence",
+    "text": "An absent, conflicting or unreadable specification reference needs Quality review. Preserve the scan, record the missing evidence and request a controlled copy. A search result alone cannot supply a missing reference."
+  },
+  {
+    "id": "CM-02",
+    "kind": "review-instruction",
+    "revision": "1",
+    "status": "current",
+    "title": "Quantity for estimate preparation",
+    "text": "Commercial records the positive whole-number quantity requested for an estimate. Hold the packet for written clarification where the number is ambiguous or missing."
+  },
+  {
+    "id": "EN-04",
+    "kind": "review-instruction",
+    "revision": "1",
+    "status": "current",
+    "title": "Material and finish comparison",
+    "text": "Retain the stated material and finish from both the request and the drawing. Engineering handles material discrepancies and Quality handles finish discrepancies. Document the two original sources and any customer clarification."
+  }
+]

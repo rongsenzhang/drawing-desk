@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#12383c" />
+    <meta
+      name="description"
+      content="Photograph or upload a drawing to compare an OpenAI reading with independent browser OCR."
+    />
+    <title>Image reader · Drawing Desk</title>
+    <link rel="icon" href="assets/mark.png" />
+    <link rel="stylesheet" href="app/styles.css" />
+    <link rel="stylesheet" href="app/upload.css" />
+  </head>
+  <body>
+    <a class="skip" href="#reader">Skip to image reader</a>
+    <header class="bar">
+      <div class="bar-inner">
+        <a class="brand" href="./" aria-label="Drawing Desk home"
+          ><i class="mark" aria-hidden="true"></i>Drawing Desk</a
+        >
+        <nav aria-label="Main navigation">
+          <a href="./#workspace">Workspace</a><a href="upload.html" aria-current="page">Image reader</a
+          ><a href="scan-lab.html">Scan lab</a><a href="inbox.html">Estimating inbox</a>
+        </nav>
+      </div>
+    </header>
+    <main id="reader" class="shell">
+      <div class="intro">
+        <div>
+          <p class="kicker"><span class="shortline"></span> Technical quotation</p>
+          <h1>Image reader</h1>
+          <p class="lead">
+            Read a drawing from a photo or file. Compare each proposed value with the source image.
+          </p>
+        </div>
+        <a class="sample-link" href="upload.html?sample=revision">Try a sample drawing</a>
+      </div>
+      <div class="reader-layout">
+        <section class="panel" aria-labelledby="input-title">
+          <div class="panel-head"><h2 id="input-title">Source image</h2></div>
+          <div class="reader-controls">
+            <label class="search-label" for="image-file">Choose an image from your device</label>
+            <input
+              type="file"
+              id="image-file"
+              accept="image/jpeg,image/png,image/webp"
+              aria-describedby="format-note"
+            />
+            <p id="format-note" class="subtext">
+              JPEG, PNG or WebP, up to 12 MiB. For a PDF, export one page as an image.
+            </p>
+            <div class="camera-controls">
+              <button type="button" class="secondary" id="camera-start">Open live camera</button>
+              <label class="secondary capture-label" for="camera-file"
+                >Take a photo
+                <input
+                  type="file"
+                  id="camera-file"
+                  accept="image/*"
+                  capture="environment"
+                  aria-label="Take a photo using the device camera"
+                />
+              </label>
+            </div>
+            <div id="live-camera" hidden>
+              <video id="camera-video" autoplay muted playsinline aria-label="Live camera preview"></video>
+              <div class="reader-actions">
+                <button type="button" class="primary" id="camera-shot" disabled>Use this frame</button
+                ><button type="button" class="secondary" id="camera-stop">Close camera</button>
+              </div>
+            </div>
+            <p role="status" id="camera-status" class="subtext"></p>
+            <p role="alert" id="image-error" class="err"></p>
+          </div>
+          <figure class="reader-image">
+            <div class="image-shell">
+              <div id="empty-image">Your image preview appears here.</div>
+              <img id="preview" alt="Prepared input image for visual verification" hidden />
+            </div>
+            <figcaption id="file-caption">No image selected.</figcaption>
+          </figure>
+          <div class="reader-controls reader-actions">
+            <button type="button" class="secondary" id="rotate" disabled>Rotate 90°</button
+            ><button type="button" class="text-button" id="clear" disabled>Clear image and results</button>
+          </div>
+        </section>
+        <section class="panel" aria-labelledby="reading-title">
+          <div class="panel-head"><h2 id="reading-title">Read and compare</h2></div>
+          <div class="reader-controls read-actions">
+            <div>
+              <h3>Browser OCR</h3>
+              <p>Read the whole image on this device with Tesseract’s English model.</p>
+              <button type="button" class="secondary" id="run-local" disabled>Run browser OCR</button>
+              <p id="local-status" role="status" class="subtext"></p>
+            </div>
+            <div>
+              <h3>OpenAI vision</h3>
+              <p>
+                Use a drawing you have permission to share. Sending passes the prepared JPEG through the
+                demo’s server to OpenAI. This page also runs browser OCR for comparison.
+              </p>
+              <button type="button" class="primary" id="run-model" disabled>Send to OpenAI</button>
+              <p id="model-status" role="status" class="subtext"></p>
+            </div>
+          </div>
+          <div class="reader-controls">
+            <p class="notice" id="review-gate">
+              Human review required. Check proposed readings against the drawing before using them for
+              estimating.
+            </p>
+            <p id="source-summary" class="subtext" aria-live="polite"></p>
+            <div id="results"></div>
+            <details class="source-detail transcript">
+              <summary>Full-image browser OCR transcript</summary>
+              <pre id="transcript">Run browser OCR to view the source text.</pre>
+            </details>
+          </div>
+        </section>
+      </div>
+      <noscript>Enable JavaScript to prepare an image and run the readers.</noscript>
+    </main>
+    <footer>
+      <div class="shell foot">
+        <span>Drawing Desk / Independent portfolio project</span
+        ><span>Image readings last for this page visit.</span>
+      </div>
+    </footer>
+    <script type="module" src="app/upload.mjs"></script>
+  </body>
+</html>
