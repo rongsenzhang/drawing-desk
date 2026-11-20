@@ -92,7 +92,12 @@ export function modelReading(result) {
       throw new Error('The image service returned invalid field evidence. Try again.');
     }
     const value = f.value?.trim() || null, evidence = f.evidence?.trim() || null;
-    return { key, value: f.status === 'missing' ? null : value, evidence, status: f.status === 'read' && (!value || !evidence) ? 'uncertain' : f.status };
+    const box = f.box;
+    const validBox = f.status !== 'missing' && evidence && Array.isArray(box) && box.length === 4
+      && box.every(n => Number.isInteger(n) && n >= 0 && n <= 1000)
+      && box[0] < box[2] && box[1] < box[3];
+    return { key, value: f.status === 'missing' ? null : value, evidence, box: validBox ? [...box] : null,
+      status: f.status === 'read' && (!value || !evidence) ? 'uncertain' : f.status };
   });
   return { model: result.model, readAt: result.readAt, fields };
 }

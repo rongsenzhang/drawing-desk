@@ -1,0 +1,13 @@
+{
+  "image": "tests/reader-independent.png",
+  "context": "Original synthetic office filing-room inventory card. The four printed labelled values were specified independently of the recognition systems. There is no specification field on the card.",
+  "width": 920,
+  "height": 660,
+  "fields": {
+    "partId": "OF-725",
+    "revision": "F",
+    "material": "ACRYLIC",
+    "finish": "GLOSS",
+    "spec": null
+  }
+}

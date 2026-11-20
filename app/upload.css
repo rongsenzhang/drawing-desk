@@ -188,3 +188,8 @@
     min-height: 145px;
   }
 }
+#pdf-controls {display:flex;align-items:center;flex-wrap:wrap;gap:9px;padding:9px 0;font-size:.9rem}
+#pdf-page {background:white;border:1px solid #a7b9ac;border-radius:4px;padding:5px 9px}
+#preview-frame {position:relative;display:flex;justify-content:center;max-width:100%;width:fit-content;line-height:0}
+#model-box {position:absolute;z-index:1;border:2px solid #ae491e;background:#ef8d5a24;box-shadow:0 0 0 1px #fff9;pointer-events:none}
+#box-caption {margin:0 0 9px}

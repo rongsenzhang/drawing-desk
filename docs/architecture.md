@@ -21,7 +21,7 @@ flowchart TD
     E --> F
     H -->|No| X[Estimating handoff JSON]
     X --> I[Independent intake replays decisions]
-    U[Visitor image or camera capture] --> J[Prepare JPEG in browser]
+    U[Image, PDF page or camera capture] --> J[Prepare JPEG in browser]
     J --> L[Full-image browser OCR]
     J -->|Explicit Send to OpenAI action| W[Hosted Worker checks request and reserves quota]
     W --> M[GPT-6.2 Astra reads pixels]
@@ -49,7 +49,7 @@ The three inputs are intentionally small enough to inspect visually. Boundary an
 | Path | Data movement and ownership |
 | --- | --- |
 | Controlled sample review | Browser storage holds sample review history and receipts. A same-tab transfer uses session storage. The exported JSON is inspectable and the inbox replays it against the supplied sources. |
-| Visitor file or camera | The browser draws the selected image or captured frame onto a fresh canvas and encodes a JPEG, up to 2,200 pixels on the longest side and 1 MiB. Preparation and full-image local OCR occur on the device. The visitor’s image and readings last for the page visit. |
+| Visitor file or camera | The browser rasterises one selected static PDF page, or draws the selected image or captured frame onto a fresh canvas and encodes a JPEG, up to 2,200 pixels on the longest side and 1 MiB. Preparation and full-image local OCR occur on the device. The visitor’s image and readings last for the page visit. |
 | Explicit model request | **Send to OpenAI** sends the prepared JPEG through the hosted Worker. The Worker uses its own credential, high image detail and high reasoning effort with a fixed schema. It sends no external URLs, original filename, visitor-authored prompt, extracted text or reference answer. D1 reserves up to 100 attempts per UTC day and 5 per client per fixed ten-minute window by default. [Hosted reader](openai-service.md) |
 | Estimating boundary | Both readings on a personal upload remain provisional. Intake accepts replayable sample handoffs. Organisational identity, access to authorised documents, tamper-evident records and a live ERP connector would be needed for an industrial handoff. |
 

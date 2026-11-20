@@ -41,16 +41,21 @@
         <section class="panel" aria-labelledby="input-title">
           <div class="panel-head"><h2 id="input-title">Source image</h2></div>
           <div class="reader-controls">
-            <label class="search-label" for="image-file">Choose an image from your device</label>
+            <label class="search-label" for="image-file">Choose an image or PDF from your device</label>
             <input
               type="file"
               id="image-file"
-              accept="image/jpeg,image/png,image/webp"
+              accept="image/jpeg,image/png,image/webp,application/pdf,.pdf"
               aria-describedby="format-note"
             />
             <p id="format-note" class="subtext">
-              JPEG, PNG or WebP, up to 12 MiB. For a PDF, export one page as an image.
+              JPEG, PNG, WebP or a static PDF, up to 12 MiB. Choose a single page from PDFs of up to 30 pages.
             </p>
+            <div id="pdf-controls" hidden>
+              <label for="pdf-page">Page to read</label>
+              <select id="pdf-page"></select>
+              <span id="pdf-count" class="mini"></span>
+            </div>
             <div class="camera-controls">
               <button type="button" class="secondary" id="camera-start">Open live camera</button>
               <label class="secondary capture-label" for="camera-file"
@@ -77,9 +82,13 @@
           <figure class="reader-image">
             <div class="image-shell">
               <div id="empty-image">Your image preview appears here.</div>
-              <img id="preview" alt="Prepared input image for visual verification" hidden />
+              <div id="preview-frame" hidden>
+                <img id="preview" alt="Prepared input image for visual verification" hidden />
+                <i id="model-box" hidden aria-hidden="true"></i>
+              </div>
             </div>
             <figcaption id="file-caption">No image selected.</figcaption>
+            <p id="box-caption" class="reader-controls subtext" role="status" hidden></p>
           </figure>
           <div class="reader-controls reader-actions">
             <button type="button" class="secondary" id="rotate" disabled>Rotate 90°</button

@@ -26,7 +26,7 @@ The public samples use fictional workshop identification plates. Technical check
 | Component | Behaviour |
 | --- | --- |
 | Drawing recognition | Tesseract LSTM reads a fixed title block on the three sample sheets. A separate connected-component detector locates isolated circular marks and overlays their positions. The initial display uses measurements previously produced by the same pipeline. |
-| Photo and file comparison | The browser prepares a JPEG from a camera frame, JPEG, PNG or WebP. Local OCR reads the whole prepared image. Selecting **Send to OpenAI** transmits that JPEG through the hosted Worker to GPT-6.2 Astra. The server holds the credential. OCR text, filenames and sample answers stay out of the request. |
+| Photo and file comparison | The browser prepares a JPEG from a camera frame, an image file or one selected page of a static PDF. Local OCR reads the whole prepared image. Selecting **Send to OpenAI** transmits that JPEG through the hosted Worker to GPT-6.2 Astra. The server holds the credential. OCR text, filenames and sample answers stay out of the request. |
 | Search and validation | BM25 ranks six sample clauses. Independent rules compare the two sources, verify quantity and reference currency, and create blocking findings. |
 | Human review | A supported correction requires a referral, a reason and a matching written response. The original discrepancy stays in the record. |
 | Integration | Both a JSON file and a same-tab transfer exercise a second estimating consumer. It replays the evidence and decisions, rejects changed or held documents and deduplicates received packets. |
@@ -37,6 +37,8 @@ Reviewer-uploaded images and readings last for the page visit. They remain provi
 ## Evidence and limits
 
 The original three drawings yielded **15/15 expected field decisions** and **9/9 expected circular marks**. Across 18 originals and controlled variants, the recogniser returned **89/90 exact field decisions** and found **51/51 expected centres** with zero extras. On one downsampled image the OCR added a comma to the material. These are three designs from one template. Independent customer drawings and time savings have yet to be evaluated. [Vision method and results](docs/vision.md) · [Raw browser measurements](tests/vision-benchmark.json) · [WebKit measurements](tests/vision-webkit.json)
+
+On a fourth, differently laid-out office inventory card, an actual file chooser on the published site sent one request after explicit confirmation. GPT-6.2 Astra and full-page browser OCR each matched all **5/5** expected field decisions, including the blank specification. The test used a touch-enabled WebKit iPhone 13 profile. [Uploaded test image](tests/reader-independent.png) · [Live upload record](tests/openai-upload-e2e.json)
 
 For eight hand-labelled relevant reference queries, six returned the intended clause first and seven returned it in the first three. Review the known wording miss and the negative controls in the [validation guide](docs/validation-engine.md).
 
@@ -53,6 +55,7 @@ Three actual, paid GPT-6.2 Astra responses scored **15/15 exact field decisions*
 | [Company and competitor research](docs/market-research.md) | The business setting, source inventory, overlapping manufacturers and comparable software. |
 | [Seven-stage role map](docs/role-map.md) | Where each stage of the published NTU KTP project appears and what still needs an industrial partner. |
 | [Technical design](docs/architecture.md) | System flow, implementation choices, acceptance checks and enterprise pilot path. |
+| [PDF page selection](docs/pdf-reader.md) | How individual vector and scanned pages become a local preview, plus supported document limits. |
 | [Hosted reader](docs/openai-service.md) | Model request, image limits, evidence format, server credentials, usage limits and provider handling. |
 | [Recognition measurements](docs/vision.md) | Reference labels, original and altered scans, positional errors and browser comparisons. |
 | [Integration contract](docs/integration.md) | The receiver's schema, replay checks, limits and duplicate handling. |

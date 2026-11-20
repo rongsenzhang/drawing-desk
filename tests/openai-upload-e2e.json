@@ -1,0 +1,141 @@
+{
+  "page": "https://rongsenzhang.github.io/drawing-desk/upload.html",
+  "service": "https://drawing-desk-vision-rz.dark-betta-0975.chatgpt.site/api/read",
+  "browser": "WebKit 26.5",
+  "emulation": "iPhone 13",
+  "groundTruth": "tests/reader-independent-labels.json",
+  "inputImage": "tests/reader-independent.png",
+  "inputMethod": "Native file chooser",
+  "beforeExplicitSendPosts": 0,
+  "afterExplicitSendPosts": [
+    "https://drawing-desk-vision-rz.dark-betta-0975.chatgpt.site/api/read"
+  ],
+  "model": "gpt-6.2-astra",
+  "readAt": "2026-11-20T23:10:14.491Z",
+  "modelFields": [
+    {
+      "key": "partId",
+      "value": "OF-725",
+      "status": "read",
+      "evidence": "PART ID: OF-725",
+      "box": [
+        75,
+        404,
+        349,
+        445
+      ]
+    },
+    {
+      "key": "revision",
+      "value": "F",
+      "status": "read",
+      "evidence": "REVISION: F",
+      "box": [
+        75,
+        522,
+        274,
+        563
+      ]
+    },
+    {
+      "key": "material",
+      "value": "ACRYLIC",
+      "status": "read",
+      "evidence": "MATERIAL: ACRYLIC",
+      "box": [
+        75,
+        640,
+        418,
+        681
+      ]
+    },
+    {
+      "key": "finish",
+      "value": "GLOSS",
+      "status": "read",
+      "evidence": "FINISH: GLOSS",
+      "box": [
+        75,
+        758,
+        326,
+        800
+      ]
+    },
+    {
+      "key": "spec",
+      "value": null,
+      "status": "missing",
+      "evidence": null,
+      "box": null
+    }
+  ],
+  "browserOcrTranscript": "OFFICE SUPPLY CABINET\n\nFiling room / inventory card\n\nSHELF LABEL INSERT\n\nPART ID: OF-725\n\nREVISION: F\n\nMATERIAL: ACRYLIC\n\nFINISH: GLOSS\n\nInternal stockroom exercise",
+  "outcomes": [
+    {
+      "key": "partId",
+      "target": "OF-725",
+      "modelValue": "OF-725",
+      "modelStatus": "read",
+      "exactModel": true,
+      "browserValue": "OF-725",
+      "exactBrowser": true,
+      "comparison": "match",
+      "uiModelValue": "OF-725"
+    },
+    {
+      "key": "revision",
+      "target": "F",
+      "modelValue": "F",
+      "modelStatus": "read",
+      "exactModel": true,
+      "browserValue": "F",
+      "exactBrowser": true,
+      "comparison": "match",
+      "uiModelValue": "F"
+    },
+    {
+      "key": "material",
+      "target": "ACRYLIC",
+      "modelValue": "ACRYLIC",
+      "modelStatus": "read",
+      "exactModel": true,
+      "browserValue": "ACRYLIC",
+      "exactBrowser": true,
+      "comparison": "match",
+      "uiModelValue": "ACRYLIC"
+    },
+    {
+      "key": "finish",
+      "target": "GLOSS",
+      "modelValue": "GLOSS",
+      "modelStatus": "read",
+      "exactModel": true,
+      "browserValue": "GLOSS",
+      "exactBrowser": true,
+      "comparison": "match",
+      "uiModelValue": "GLOSS"
+    },
+    {
+      "key": "spec",
+      "target": null,
+      "modelValue": null,
+      "modelStatus": "missing",
+      "exactModel": true,
+      "browserValue": null,
+      "exactBrowser": true,
+      "comparison": "review",
+      "uiModelValue": "Missing"
+    }
+  ],
+  "viewport": {
+    "width": 390,
+    "documentWidth": 390
+  },
+  "pageErrors": [],
+  "reviewGate": "Human review required. Check proposed readings against the drawing before using them for estimating.",
+  "modelStatus": "OpenAI reading completed. Verify the proposed values against the preview.",
+  "exactModel": 5,
+  "exactBrowser": 5,
+  "total": 5,
+  "httpStatus": 200
+}

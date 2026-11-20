@@ -1,0 +1,7 @@
+*.pdf binary
+*.png binary
+*.gz binary
+*.wasm binary
+*.bcmap binary
+assets/pdf/** linguist-vendored
+assets/ocr/** linguist-vendored

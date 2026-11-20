@@ -5,6 +5,7 @@ const el = id => document.getElementById(id);
 const state = {
   version: 0, original: null, name: '', rotation: 0, prepared: null, url: '', local: null, remote: null,
   localJob: null, remoteJob: null, camera: null, cameraEpoch: 0, cameraPending: false, preparing: false,
+  pdf: null, pdfLoad: null, pageRender: null, page: 1, located: null,
 };
 const set = (id, text) => { el(id).textContent = text; };
 const httpMessage = status => ({
@@ -47,7 +48,8 @@ function discardReadings() {
   state.local = null; state.remote = null; state.prepared = null;
   if (state.url) URL.revokeObjectURL(state.url);
   state.url = '';
-  el('preview').removeAttribute('src'); el('preview').hidden = true; el('empty-image').hidden = false;
+  el('preview').removeAttribute('src'); el('preview').hidden = true; el('preview-frame').hidden = true; el('empty-image').hidden = false;
+  hideBox();
   set('results', ''); set('source-summary', ''); set('local-status', ''); set('model-status', '');
   set('transcript', 'Run browser OCR to view the source text.');
   syncControls();
@@ -72,34 +74,85 @@ const jpeg = (canvas, quality) => new Promise((resolve, reject) => canvas.toBlob
   else reject(new Error('This browser could not prepare a JPEG preview.'));
 }, 'image/jpeg', quality));
 
+function closePdf() {
+  state.pdfLoad?.abort(); state.pageRender?.abort(); state.pdf?.destroy();
+  state.pdfLoad = null; state.pageRender = null; state.pdf = null; state.page = 1;
+  el('pdf-controls').hidden = true; el('pdf-page').replaceChildren(); set('pdf-count', '');
+}
+
+async function presentRaster(source, width, height, rotation, name, version) {
+  let scale = Math.min(1, 2200 / Math.max(width, height)), canvas, blob;
+  for (let attempt = 0; attempt < 4; attempt++) {
+    if (version !== state.version) return;
+    canvas = drawImage(source, width, height, rotation, scale);
+    blob = await jpeg(canvas, attempt ? .73 : .87);
+    if (blob.size <= maxOutputBytes) break;
+    scale *= .75;
+  }
+  if (blob.size > maxOutputBytes) throw new Error('The prepared image still exceeds 1 MiB. Crop to the relevant area and retry.');
+  if (version !== state.version) return;
+  state.prepared = blob; state.url = URL.createObjectURL(blob);
+  const preview = el('preview'); preview.src = state.url; preview.hidden = false;
+  el('empty-image').hidden = true; el('preview-frame').hidden = false;
+  set('file-caption', `${name} · ${canvas.width} × ${canvas.height} px · prepared JPEG · ${Math.ceil(blob.size / 1024)} KiB`);
+  set('local-status', 'Ready for local reading.'); set('model-status', 'Ready to send when you choose.');
+}
+
+async function selectPage(number, rotation = 0) {
+  if (!state.pdf) return;
+  const pdf = state.pdf;
+  state.pageRender?.abort();
+  const controller = new AbortController(); state.pageRender = controller;
+  discardReadings(); set('image-error', ''); state.preparing = true; state.rotation = rotation; state.page = number;
+  const version = state.version;
+  set('file-caption', 'Rendering the selected PDF page on this device…'); syncControls();
+  let canvas;
+  try {
+    canvas = await pdf.render(number, controller.signal);
+    if (state.version !== version) return;
+    await presentRaster(canvas, canvas.width, canvas.height, rotation, `${state.name} · page ${number} of ${pdf.count}`, version);
+  } catch (error) {
+    if (state.version !== version) return;
+    set('file-caption', 'No PDF page ready.'); set('image-error', /PDF page|too long|1 MiB/.test(error.message) ? error.message : 'This PDF page could not be rendered. Choose another page or export it as an image.');
+  } finally {
+    if (canvas) canvas.width = canvas.height = 1;
+    if (state.version === version) { state.preparing = false; state.pageRender = null; syncControls(); }
+  }
+}
+
 async function prepare(file, name, rotation = 0) {
-  stopCamera(); set('camera-status', ''); set('image-error', ''); discardReadings();
+  closePdf(); stopCamera(); set('camera-status', ''); set('image-error', ''); discardReadings();
   state.original = file; state.name = name; state.rotation = rotation; state.preparing = true;
   const version = state.version;
   set('file-caption', 'Preparing the image on this device…'); syncControls();
   let sourceUrl;
   try {
-    if (!file?.size || file.size > maxInputBytes) throw new Error('Choose an image larger than zero bytes and no bigger than 12 MiB.');
-    imageHeader(await file.arrayBuffer());
+    if (!file?.size || file.size > maxInputBytes) throw new Error('Choose a non-empty file no bigger than 12 MiB.');
+    const data = await file.arrayBuffer();
+    if (version !== state.version) return;
+    const beginsPdf = String.fromCharCode(...new Uint8Array(data, 0, Math.min(5, data.byteLength))) === '%PDF-';
+    if (beginsPdf || file.type === 'application/pdf' || /\.pdf$/i.test(name)) {
+      if (!beginsPdf) throw new Error('This PDF has an unsupported file header. Choose a readable PDF or an image.');
+      const ctrl = new AbortController(); state.pdfLoad = ctrl;
+      const {openPdf} = await import('./upload-pdf.mjs');
+      if (version !== state.version) return;
+      const pdf = await openPdf(data, ctrl.signal);
+      if (state.version !== version) { pdf.destroy(); return; }
+      state.pdf = pdf; state.pdfLoad = null;
+      const select = el('pdf-page');
+      for (let n = 1; n <= pdf.count; n++) select.add(new Option('Page ' + n, String(n)));
+      set('pdf-count', pdf.count + (pdf.count === 1 ? ' page' : ' pages'));
+      el('pdf-controls').hidden = false;
+      await selectPage(1); return;
+    }
+    imageHeader(data);
     const source = new Image();
     sourceUrl = URL.createObjectURL(file); source.src = sourceUrl;
     await source.decode();
     if (version !== state.version) return;
     const width = source.naturalWidth, height = source.naturalHeight;
     if (!width || !height || width * height > 50000000 || Math.max(width, height) > 20000) throw new Error('This image exceeds the supported pixel dimensions.');
-    let scale = Math.min(1, 2200 / Math.max(width, height)), canvas, blob;
-    for (let attempt = 0; attempt < 4; attempt++) {
-      canvas = drawImage(source, width, height, rotation, scale);
-      blob = await jpeg(canvas, attempt ? .73 : .87);
-      if (blob.size <= maxOutputBytes) break;
-      scale *= 0.75;
-    }
-    if (blob.size > maxOutputBytes) throw new Error('The prepared image still exceeds 1 MiB. Crop to the relevant page and try again.');
-    if (version !== state.version) return;
-    state.prepared = blob; state.url = URL.createObjectURL(blob);
-    const preview = el('preview'); preview.src = state.url; preview.hidden = false; el('empty-image').hidden = true;
-    set('file-caption', `${name} · ${canvas.width} × ${canvas.height} px · prepared JPEG · ${Math.ceil(blob.size / 1024)} KiB`);
-    set('local-status', 'Ready for local reading.'); set('model-status', 'Ready to send when you choose.');
+    await presentRaster(source, width, height, rotation, name, version);
   } catch (error) {
     if (version !== state.version) return;
     state.original = null;
@@ -112,7 +165,7 @@ async function prepare(file, name, rotation = 0) {
 }
 
 function clearImage() {
-  stopCamera(); state.original = null; state.preparing = false; discardReadings();
+  closePdf(); stopCamera(); state.original = null; state.preparing = false; discardReadings();
   el('image-file').value = ''; el('camera-file').value = '';
   set('file-caption', 'No image selected.'); set('image-error', ''); set('camera-status', '');
 }
@@ -128,6 +181,25 @@ function readValue(field) {
   if (field.status === 'missing') return 'Missing';
   if (field.status === 'uncertain') return field.value ? `Uncertain · ${field.value}` : 'Uncertain';
   return field.value;
+}
+function hideBox() {
+  state.located = null; el('model-box').hidden = true; el('box-caption').hidden = true; set('box-caption', '');
+}
+function positionBox() {
+  if (!state.located || el('preview').hidden) return;
+  const [left, top, right, bottom] = state.located;
+  const image = el('preview').getBoundingClientRect(), frame = el('preview-frame').getBoundingClientRect();
+  const marker = el('model-box');
+  Object.assign(marker.style, {
+    left: image.left - frame.left + image.width * left / 1000 + 'px', top: image.top - frame.top + image.height * top / 1000 + 'px',
+    width: image.width * (right - left) / 1000 + 'px', height: image.height * (bottom - top) / 1000 + 'px',
+  });
+  marker.hidden = false;
+}
+function locateField(label, field) {
+  state.located = field.box; positionBox(); el('box-caption').hidden = false;
+  set('box-caption', 'Approximate OpenAI location for ' + label + '. Verify the highlighted area against the original.');
+  el('preview-frame').scrollIntoView({block: 'center'});
 }
 function renderResults() {
   const container = el('results');
@@ -147,7 +219,14 @@ function renderResults() {
       ['OCR source line', a?.evidence], ['Model evidence', b?.evidence]]) {
       if (value) dl.append(element('dt', title), element('dd', value));
     }
-    row.append(dl); container.append(row);
+    row.append(dl);
+    if (b?.box) {
+      const locate = element('button', 'Locate on image', 'text-button');
+      locate.type = 'button'; locate.dataset.locate = key;
+      locate.setAttribute('aria-label', 'Locate ' + label + ' on image');
+      locate.addEventListener('click', () => locateField(label, b)); row.append(locate);
+    }
+    container.append(row);
   }
   const lines = [];
   if (disagreements.length) lines.push('Disagreements: ' + disagreements.join(', ') + '.');
@@ -217,7 +296,7 @@ async function sendModel() {
   if (!state.local && !state.localJob) void readLocal();
   if (!apiBase) { set('model-status', 'The hosted OpenAI service is unavailable. Browser OCR can still run.'); return; }
   const version = state.version, controller = new AbortController();
-  state.remoteJob = controller; state.remote = null; renderResults(); syncControls();
+  state.remoteJob = controller; state.remote = null; hideBox(); renderResults(); syncControls();
   set('model-status', 'Sending the prepared image to OpenAI…');
   const timeout = setTimeout(() => controller.abort(), 90000);
   try {
@@ -285,7 +364,12 @@ for (const id of ['image-file', 'camera-file']) el(id).addEventListener('change'
   const file = event.target.files[0];
   if (file) { void prepare(file, file.name || 'Camera photo'); event.target.value = ''; }
 });
-el('rotate').addEventListener('click', () => { if (state.original) void prepare(state.original, state.name, (state.rotation + 1) % 4); });
+el('pdf-page').addEventListener('change', e => { void selectPage(Number(e.target.value)); });
+el('rotate').addEventListener('click', () => {
+  const next = (state.rotation + 1) % 4;
+  if (state.pdf) void selectPage(state.page, next);
+  else if (state.original) void prepare(state.original, state.name, next);
+});
 el('clear').addEventListener('click', clearImage);
 el('camera-start').addEventListener('click', openCamera);
 el('camera-stop').addEventListener('click', () => { stopCamera(); set('camera-status', 'Camera closed.'); });
@@ -293,6 +377,7 @@ el('camera-shot').addEventListener('click', capture);
 el('camera-video').addEventListener('loadeddata', () => { if (state.camera) el('camera-shot').disabled = !el('camera-video').videoWidth; });
 el('run-local').addEventListener('click', readLocal);
 el('run-model').addEventListener('click', sendModel);
+new ResizeObserver(positionBox).observe(el('preview'));
 window.addEventListener('pagehide', clearImage);
 document.addEventListener('visibilitychange', () => { if (document.hidden && (state.camera || state.cameraPending)) { stopCamera(); set('camera-status', 'Camera closed.'); } });
 const sample = new URL(location.href).searchParams.get('sample');

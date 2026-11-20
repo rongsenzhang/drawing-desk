@@ -1,5 +1,17 @@
 # Third-party notices
 
+## Mozilla PDF.js 6.5.438
+
+The browser PDF reader ships the unmodified Mozilla display and worker bundles, with local decoding and font assets from `pdfjs-dist` 6.5.438. The source includes the corresponding notices alongside the distributed files. [Mozilla upstream release](https://github.com/mozilla/pdf.js/releases/tag/v6.5.438) · [Apache 2.0 licence](assets/pdf/LICENSE) · [Embedded core-js 3.51.0 MIT licence](assets/pdf/LICENSE-core-js) · [Reproduction script](scripts/vendor-pdf.py).
+
+| Distributed resources | Notices |
+| --- | --- |
+| Character maps and standard fonts | [Adobe CMaps](assets/pdf/cmaps/LICENSE) · [Foxit fonts](assets/pdf/standard_fonts/LICENSE_FOXIT) · [Liberation fonts](assets/pdf/standard_fonts/LICENSE_LIBERATION) |
+| Image decoding, including WebAssembly and JavaScript fallbacks | [JBIG2](assets/pdf/wasm/LICENSE_JBIG2) · [Mozilla JBIG2 adapter](assets/pdf/wasm/LICENSE_PDFJS_JBIG2) · [OpenJPEG](assets/pdf/wasm/LICENSE_OPENJPEG) · [Mozilla OpenJPEG adapter](assets/pdf/wasm/LICENSE_PDFJS_OPENJPEG) |
+| Colour management and ICC profile | [QCMS](assets/pdf/wasm/LICENSE_QCMS) · [Mozilla QCMS adapter](assets/pdf/wasm/LICENSE_PDFJS_QCMS) · [ICC profile CC0](assets/pdf/iccs/LICENSE) |
+
+## OCR software and weights
+
 Drawing Desk distributes the following browser software and language model in `assets/ocr/`. The workshop sheets and RFQs were created for the demo. The English OCR weights are an existing pretrained model.
 
 | Distribution | Files shipped | Licence and provenance |
