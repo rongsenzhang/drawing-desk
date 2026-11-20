@@ -35,6 +35,7 @@ jobs:
             sleep 1
           done
           BASE_URL=http://127.0.0.1:4178/ npm run test:browser
+          BROWSER_ENGINE=webkit BASE_URL=http://127.0.0.1:4178/ npm run test:browser
           LAB_BASE_URL=http://127.0.0.1:4178/ node scripts/smoke-scan-lab.cjs
           BASE_URL=http://127.0.0.1:4178/ node scripts/upload-smoke.cjs
           BASE_URL=http://127.0.0.1:4178/ node scripts/pdf-smoke.cjs

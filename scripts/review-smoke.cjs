@@ -75,11 +75,20 @@ async function review(browser, device) {
   try {
     const page = await context.newPage();
     page.setDefaultTimeout(12000);
+    // Let WebKit finish loading the actual drawing before deliberately navigating away.
+    const verifyDrawing = async () => {
+      const width = await page.locator('.sheet img').evaluate(async image => {
+        await image.decode();
+        return image.naturalWidth;
+      });
+      assert.equal(width, 1200);
+    };
     const open = async id => {
       const url = new URL(base);
       url.searchParams.set('case', id);
       await page.goto(url.href, { waitUntil: 'load' });
       await page.locator('[data-case="' + id + '"][aria-pressed="true"]').waitFor();
+      await verifyDrawing();
     };
     await open('revision');
     await hasText(page, '.tag.held', /On hold/i);
@@ -133,6 +142,7 @@ async function review(browser, device) {
     assert.equal(await page.locator('.audit-item').count(), 2);
     await page.reload({ waitUntil: 'load' });
     await hasText(page, '.effective', /CL-104-02/);
+    await verifyDrawing();
     const accepted = await downloadHandoff(page);
     assert.equal(accepted.document.status, 'ready');
     assert.deepEqual(accepted.document.decisions.map(d => d.action), ['refer', 'resolve']);
@@ -155,6 +165,7 @@ async function review(browser, device) {
     step = 'valid clean case and same-tab handoff';
     await open('revision');
     await page.locator('[data-case="clean"]').click();
+    await verifyDrawing();
     await hasText(page, '.tag.ready', /Ready for estimating/i);
     assert.equal(await page.locator('.field-row').count(), 5);
     assert.equal(await page.locator('.exception').count(), 0);
